@@ -4,15 +4,27 @@ import './App.css';
 function App() {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
+  const [editId, setEditId] = useState(null);
 
   const inputRef = useRef(null);
 
   useEffect(() => {
     inputRef.current.focus();
-  }, []);
+  });
 
   const addTodo = () => {
-    setTodos([...todos, { list: todo, id: Date.now(), completed: false }]);
+    if (editId !== null) {
+      // If editing, update the existing todo
+      setTodos((prevTodos) =>
+        prevTodos.map((item) =>
+          item.id === editId ? { ...item, list: todo } : item
+        )
+      );
+      setEditId(null);
+    } else {
+      // If not editing, add a new todo
+      setTodos([...todos, { list: todo, id: Date.now(), completed: false }]);
+    }
     setTodo('');
   };
 
@@ -26,6 +38,12 @@ function App() {
 
   const onDelete = (id) => {
     setTodos(todos.filter((item) => item.id !== id));
+  };
+
+  const onEdit = (id) => {
+    const editTodo = todos.find((item) => item.id === id);
+    setTodo(editTodo.list);
+    setEditId(id);
   };
 
   return (
@@ -60,7 +78,7 @@ function App() {
               </p>
             </div>
             <div className="right">
-              <i className="fas fa-edit"></i>
+              <i className="fas fa-edit" onClick={() => onEdit(item.id)}></i>
               <i onClick={() => onDelete(item.id)} className="fas fa-times"></i>
             </div>
           </div>
