@@ -1,12 +1,21 @@
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  background: rgb(91,65,76);
-background: radial-gradient(circle, rgba(91,65,76,1) 65%, rgba(75,170,158,1) 100%, rgba(83,178,193,1) 100%, rgba(148,218,233,1) 100%, rgba(148,218,233,1) 100%);
+  background: rgb(12, 2, 7);
+  /* background: radial-gradient(
+    circle,
+    rgba(91, 65, 76, 1) 65%,
+    rgba(75, 170, 158, 1) 100%,
+    rgba(83, 178, 193, 1) 100%,
+    rgba(148, 218, 233, 1) 100%,
+    rgba(148, 218, 233, 1) 100%
+  ); */
 }
+
 .app {
   position: absolute;
   top: 10%;
@@ -21,12 +30,6 @@ background: radial-gradient(circle, rgba(91,65,76,1) 65%, rgba(75,170,158,1) 100
 .app h1,
 h2 {
   color: rgb(198, 198, 198);
-}
-
-.app .input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .app .input {
@@ -55,12 +58,14 @@ h2 {
   color: grey;
   margin-right: 5px;
 }
+
 .app .todos {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 .app .todos .todo {
   margin-top: 0.8em;
   width: 20em;
@@ -72,6 +77,7 @@ h2 {
   border-radius: 6px;
   padding: 5px;
 }
+
 .app .todos .todo .left {
   display: flex;
   justify-content: flex-start;
